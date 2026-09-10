@@ -1,3 +1,4 @@
+import { BrandCredit } from "@/components/brand-credit";
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import {
   FolderOpen,
@@ -16,7 +17,10 @@ export function Shell() {
   const { data, error, loading, notice } = useStore();
   const pathname = useLocation({ select: (l) => l.pathname });
   const basepath = import.meta.env.BASE_URL.replace(/\/$/, "");
-  const path = basepath && pathname.startsWith(basepath + "/") ? pathname.slice(basepath.length) : pathname;
+  const path =
+    basepath && pathname.startsWith(basepath + "/")
+      ? pathname.slice(basepath.length)
+      : pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
   if (path === "/login" || path.startsWith("/auth/")) return <Outlet />;
   if (loading)
@@ -33,6 +37,7 @@ export function Shell() {
         <div className="wordmark">
           OMA<span>OWNED MEDIA AUDITOR</span>
         </div>
+        <BrandCredit />
         <Notice>{error}</Notice>
         <Button asChild>
           <Link to="/login">Sign in</Link>
@@ -89,7 +94,7 @@ export function Shell() {
               Sign out
             </Button>
           )}
-          <small>Heads &amp; Tales</small>
+          <BrandCredit />
         </div>
       </aside>
       <div className="workspace">

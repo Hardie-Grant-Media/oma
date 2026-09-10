@@ -48,3 +48,17 @@ Acceptance: catalogue appears only in drafting; extraction, calibration and asse
 ## Hosted app and report sharing (approved 2026-09-10)
 
 The user approved docs/report-sharing-brief.md and subsequently approved hosting the internal staff app. Netlify serves the staff app at / and the isolated viewer at /reports/. Existing login, membership, client assignment, approved snapshots and offline exports remain. Only explicit report shares grant capability-based recipient access; there is no public report listing. User will push to GitHub and connect Netlify, then return to complete backend deployment and exact hosted-origin/Auth configuration. See docs/report-sharing-handoff.md.
+
+## Rounded interface and password sign-in (approved 2026-09-10)
+
+Timothy requested a rounded, softer, minimal black/white/grey interface, password login and a PR. He confirmed email addresses as usernames. This explicitly extends the existing email-auth exception to password sign-in; invitation-only accounts, active membership and client assignments remain enforced by the backend. No new identity store, signup path, grants or schema changes.
+
+Implementation: shared radius tokens, white panels on a light grey canvas, rounded navigation and table containers; Supabase `signInWithPassword`; generic failure messages; existing email-link fallback; password setup/recovery through PKCE callback and authenticated `updateUser`. Passwords stay in form memory and go only to Supabase Auth.
+
+Environment: feature branch `feat/soft-ui-password-login`; local synthetic preview and browser-intercepted Auth/API tests at loopback addresses. No production database, Auth configuration, schedules, AI calls or email delivery changed. GitHub Pages remains the approved host; this PR is not merged or deployed.
+
+Acceptance: successful/failed password login, denied membership response, invitation-only email links, reset callback under `/oma/`, expired/missing sessions, confirmation mismatch, failed update, responsive monochrome workspace and keyboard/accessibility checks. Real Supabase Auth and SMTP acceptance remains a release check; mocked browser tests do not prove delivery or backend authorization.
+
+## Reload Media branding (approved 2026-09-10)
+
+Timothy identified OMA as a tool built by Reload Media and requested its branding. Use the official white logo sourced from https://www.reloadmedia.com.au/wp-content/uploads/2024/06/ReloadMediaLogo.svg (linked by the homepage), stored locally and displayed on a dark monochrome background. Attribute the login, workspace, password screens and report viewer to Reload Media. New report output identifies the tool builder as Reload Media; existing approved snapshots remain immutable. Product catalogue provenance and offers are unchanged.

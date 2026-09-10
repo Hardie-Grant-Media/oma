@@ -20,10 +20,10 @@
   --color-border: var(--border);
   --color-input: var(--border);
   --color-ring: var(--foreground);
-  --radius-sm: 3px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
 }
 :root {
   --background: #fff;
@@ -32,10 +32,10 @@
   --primary-foreground: #fff;
   --secondary: #f2f2f2;
   --muted-foreground: #686868;
-  --border: #dedede;
+  --border: #e5e5e5;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--foreground);
-  background: var(--background);
+  background: #f7f7f7;
   font-synthesis: none;
 }
 * {
@@ -175,7 +175,8 @@ textarea {
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  background: #fafafa;
+  background: #fff;
+  border-radius: 0 24px 24px 0;
   z-index: 30;
 }
 .wordmark {
@@ -208,7 +209,7 @@ textarea {
   align-items: center;
   gap: 11px;
   padding: 10px 12px;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   color: #666;
   font-size: 13px;
 }
@@ -228,15 +229,6 @@ textarea {
 .sidebar-bottom {
   margin-top: auto;
   padding-top: 40px;
-}
-.sidebar-bottom > small {
-  display: block;
-  color: #666;
-  font-size: 10px;
-  letter-spacing: 0.1px;
-  border-top: 1px solid var(--border);
-  margin-top: 20px;
-  padding: 18px 0 0;
 }
 .account {
   display: flex;
@@ -303,9 +295,10 @@ textarea {
 .metrics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 25px 0 29px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  padding: 26px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
   margin-bottom: 35px;
 }
 .metrics > div {
@@ -364,7 +357,7 @@ textarea {
 }
 th {
   font-size: 10px !important;
-  color: #747474 !important;
+  color: #666 !important;
   font-weight: 500 !important;
 }
 td {
@@ -393,34 +386,30 @@ tr:last-child {
 }
 .audit-tabs {
   display: flex;
-  gap: 28px;
-  border-bottom: 1px solid var(--border);
+  gap: 8px;
+  padding: 6px;
+  background: #ededed;
+  border-radius: var(--radius-lg);
   margin-bottom: 32px;
   align-items: center;
 }
 .audit-tabs > a {
-  padding: 10px 0 15px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
   color: #666;
   font-size: 12px;
   position: relative;
 }
 .audit-tabs > a.selected {
+  background: #fff;
+  box-shadow: 0 2px 5px #00000008;
   color: #111;
   font-weight: 600;
-}
-.audit-tabs > a.selected:after {
-  content: "";
-  height: 2px;
-  background: #111;
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
 }
 .audit-tabs > a > span {
   font-size: 9px;
   background: #eee;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   padding: 2px 5px;
   margin-left: 6px;
 }
@@ -479,8 +468,9 @@ tr:last-child {
   line-height: 1.7;
 }
 .evidence-item {
+  background: #fff;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: var(--radius-lg);
   margin-top: 12px;
 }
 .evidence-item > summary {
@@ -592,8 +582,9 @@ details > div.stack {
   margin-top: 11px;
 }
 .panel {
+  background: #fff;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: var(--radius-lg);
   padding: 22px;
 }
 .heatmap h2 {
@@ -621,7 +612,7 @@ details > div.stack {
 .score-cell {
   display: inline-grid;
   place-items: center;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   width: 33px;
   height: 31px;
   font-weight: 600;
@@ -704,6 +695,7 @@ details > div.stack {
   height: calc(100vh - 290px);
   min-height: 650px;
   border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   background: #f5f5f5;
 }
 .revision-history {
@@ -719,8 +711,9 @@ details > div.stack {
   gap: 20px;
 }
 .client-list > a {
+  background: #fff;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: var(--radius-lg);
   padding: 24px;
 }
 .client-list > a:hover {
@@ -775,7 +768,7 @@ details > div.stack {
   right: 22px;
   background: #fff;
   box-shadow: 0 0 0 1px #ddd;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   font-size: 11px;
   padding: 7px 11px;
   max-width: 400px;
@@ -785,8 +778,13 @@ details > div.stack {
   display: none;
 }
 .login {
-  width: min(390px, calc(100% - 40px));
-  margin: 15vh auto;
+  width: min(460px, calc(100% - 32px));
+  margin: 8vh auto;
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 16px 60px #00000006;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -797,7 +795,7 @@ details > div.stack {
   gap: 20px;
 }
 .login .wordmark {
-  margin-bottom: 25px;
+  margin-bottom: 8px;
 }
 .loading {
   padding: 80px;
@@ -947,4 +945,73 @@ details > div.stack {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+[data-slot="table-container"] {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+[data-slot="table-header"] {
+  background: #fafafa;
+}
+[data-slot="table-head"]:first-child,
+[data-slot="table-cell"]:first-child {
+  padding-left: 20px;
+}
+[data-slot="table-head"]:last-child,
+[data-slot="table-cell"]:last-child {
+  padding-right: 20px;
+}
+.login [data-slot="input"],
+.login [data-slot="button"] {
+  min-height: 44px;
+}
+@media (max-width: 760px) {
+  .login {
+    padding: 26px;
+    margin: 5vh auto;
+  }
+  .metrics {
+    padding: 20px 14px;
+  }
+  .audit-tabs {
+    gap: 4px;
+  }
+  .audit-tabs > a {
+    padding: 10px 12px;
+  }
+}
+
+.brand-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: #171717;
+  color: #fff;
+  width: fit-content;
+  max-width: 100%;
+}
+.brand-credit span {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.brand-credit img {
+  display: block;
+  width: 110px;
+  height: auto;
+}
+.sidebar-bottom .brand-credit {
+  margin-top: 24px;
+  padding: 10px;
+  gap: 8px;
+}
+.sidebar-bottom .brand-credit img {
+  width: 100px;
+}
+.login .brand-credit {
+  align-self: center;
 }

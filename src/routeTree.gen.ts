@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuditsAuditIdRouteImport } from './routes/audits.$auditId'
 import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as AuthPasswordRouteImport } from './routes/auth.password'
 import { Route as ClientsIndexRouteImport } from './routes/clients.index'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
 
@@ -42,6 +43,11 @@ const AuthCallbackRoute = AuthCallbackRouteImport.update({
   path: '/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthPasswordRoute = AuthPasswordRouteImport.update({
+  id: '/auth/password',
+  path: '/auth/password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClientsIndexRoute = ClientsIndexRouteImport.update({
   id: '/clients/',
   path: '/clients/',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/audits/$auditId': typeof AuditsAuditIdRoute
   '/auth/callback': typeof AuthCallbackRoute
+  '/auth/password': typeof AuthPasswordRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/': typeof ClientsIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/audits/$auditId': typeof AuditsAuditIdRoute
   '/auth/callback': typeof AuthCallbackRoute
+  '/auth/password': typeof AuthPasswordRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients': typeof ClientsIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/audits/$auditId': typeof AuditsAuditIdRoute
   '/auth/callback': typeof AuthCallbackRoute
+  '/auth/password': typeof AuthPasswordRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/': typeof ClientsIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/audits/$auditId'
     | '/auth/callback'
+    | '/auth/password'
     | '/clients/$clientId'
     | '/clients/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/audits/$auditId'
     | '/auth/callback'
+    | '/auth/password'
     | '/clients/$clientId'
     | '/clients'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/audits/$auditId'
     | '/auth/callback'
+    | '/auth/password'
     | '/clients/$clientId'
     | '/clients/'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   AuditsAuditIdRoute: typeof AuditsAuditIdRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
+  AuthPasswordRoute: typeof AuthPasswordRoute
   ClientsClientIdRoute: typeof ClientsClientIdRoute
   ClientsIndexRoute: typeof ClientsIndexRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/password': {
+      id: '/auth/password'
+      path: '/auth/password'
+      fullPath: '/auth/password'
+      preLoaderRoute: typeof AuthPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/clients/': {
       id: '/clients/'
       path: '/clients'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   AuditsAuditIdRoute: AuditsAuditIdRoute,
   AuthCallbackRoute: AuthCallbackRoute,
+  AuthPasswordRoute: AuthPasswordRoute,
   ClientsClientIdRoute: ClientsClientIdRoute,
   ClientsIndexRoute: ClientsIndexRoute,
 }

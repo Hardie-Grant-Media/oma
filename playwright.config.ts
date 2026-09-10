@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import { execFileSync } from "node:child_process";
+const port = process.env.OMA_E2E_PORT || "5174";
 const local = process.env.OMA_LOCAL_AUTH_TESTS === "true";
 const keys = local
   ? JSON.parse(
@@ -15,11 +16,11 @@ export default defineConfig({
   testDir: "tests/e2e",
   fullyParallel: true,
   reporter: "list",
-  use: { baseURL: "http://127.0.0.1:5174", trace: "retain-on-failure" },
+  use: { baseURL: `http://127.0.0.1:${port}`, trace: "retain-on-failure" },
   webServer: [
     {
-      command: "VITE_DEMO=true npm run dev -- --port 5174 --strictPort",
-      url: "http://127.0.0.1:5174",
+      command: `VITE_DEMO=true npm run dev -- --port ${port} --strictPort`,
+      url: `http://127.0.0.1:${port}`,
       reuseExistingServer: !process.env.CI,
     },
     ...(local

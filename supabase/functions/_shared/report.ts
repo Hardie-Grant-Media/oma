@@ -199,13 +199,13 @@ export function renderReport(
     REPORT_VERSION +
     '"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; img-src data:; base-uri \'none\'; form-action \'none\'"><title>' +
     e(client) +
-    " · HeadWay Owned Media Audit</title><style>" +
+    " · OMA Owned Media Audit</title><style>" +
     REPORT_CSS +
     "</style></head><body>" +
-    '<a class="skip" href="#main">Skip to report</a><nav class="topnav" aria-label="Report sections"><div class="nav-wrap"><a class="brandmark" href="#main">OMA <span>HeadWay audit</span></a><div class="navlinks">' +
+    '<a class="skip" href="#main">Skip to report</a><nav class="topnav" aria-label="Report sections"><div class="nav-wrap"><a class="brandmark" href="#main">OMA <span>Owned Media Auditor</span></a><div class="navlinks">' +
     nav +
     "</div></div></nav>" +
-    '<main id="main"><header class="hero"><div class="wrap"><p class="eyebrow">HeadWay Owned Media Audit</p><h1>' +
+    '<main id="main"><header class="hero"><div class="wrap"><p class="eyebrow">OMA Owned Media Audit</p><h1>' +
     e(client) +
     '</h1><p class="subtitle">' +
     e(channels) +
@@ -213,7 +213,7 @@ export function renderReport(
     e(client) +
     "</dd></div><div><dt>Channels reviewed</dt><dd>" +
     e(channels) +
-    '</dd></div><div><dt>Prepared by</dt><dd>Heads &amp; Tales</dd></div></dl><p class="meta">' +
+    '</dd></div><div><dt>Tool built by</dt><dd>Reload Media</dd></div></dl><p class="meta">' +
     e(period) +
     " · " +
     (revision.approved_at ? "Approved" : "Draft") +
@@ -469,7 +469,7 @@ export function renderReport(
         ).join("") +
         "</dl>",
     ) +
-    '</main><footer><div class="wrap"><div class="footer-brand">Heads &amp; Tales<p>Strategic thinking for memorable owned media.</p></div><p class="meta">HeadWay Owned Media Audit<br>Prepared for ' +
+    '</main><footer><div class="wrap"><div class="footer-brand">Reload Media<p>OMA · Owned Media Auditor</p></div><p class="meta">OMA Owned Media Audit<br>Prepared for ' +
     e(client) +
     "<br>Confidential · " +
     (revision.approved_at ? "Approved" : "Draft") +

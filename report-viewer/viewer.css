@@ -27,7 +27,7 @@ body,
 .shared-report iframe {
   display: block;
   width: 100%;
-  height: calc(100dvh - 73px);
+  height: calc(100dvh - 100px);
   border: 0;
   background: white;
 }
@@ -50,5 +50,15 @@ body,
     padding: 1rem;
     gap: 0.7rem;
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .viewer-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .viewer-header > span:last-child {
+    margin-left: 0;
   }
 }
