@@ -22,7 +22,7 @@ export function Shell() {
       ? pathname.slice(basepath.length)
       : pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
-  if (path === "/login" || path.startsWith("/auth/")) return <Outlet />;
+  if (path.replace(/\/$/, "") === "/login" || path.startsWith("/auth/")) return <Outlet />;
   if (loading)
     return (
       <main className="loading">

@@ -76,7 +76,7 @@ test("password login uses email and opens assigned workspace", async ({
   page,
 }) => {
   const calls = await mock(page);
-  await page.goto("login");
+  await page.goto("login/");
   await page.getByLabel("Email", { exact: true }).fill(user.email);
   await page.getByLabel("Password", { exact: true }).fill("synthetic-password");
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
