@@ -79,9 +79,14 @@ export function createHandler(deps: Dependencies = { config, authenticate }) {
         return new Response(null, { status: 204, headers });
       const path = new URL(req.url).pathname.replace(/\/$/, "");
       const resourcePath = new URL(settings.resourceUrl).pathname;
+      // The hosted gateway strips /functions/v1 before invoking the function.
+      const runtimePath = resourcePath.replace(/^\/functions\/v1(?=\/)/, "");
+      const paths = [resourcePath, runtimePath];
       const metadata = `${settings.resourceUrl}/.well-known/oauth-protected-resource`;
       if (
-        path === `${resourcePath}/.well-known/oauth-protected-resource` &&
+        paths.some(
+          (base) => path === `${base}/.well-known/oauth-protected-resource`,
+        ) &&
         req.method === "GET"
       ) {
         return json(
@@ -95,7 +100,7 @@ export function createHandler(deps: Dependencies = { config, authenticate }) {
           200,
         );
       }
-      if (path !== resourcePath) return json({ error: "Not found." }, 404);
+      if (!paths.includes(path)) return json({ error: "Not found." }, 404);
       headers.set(
         "WWW-Authenticate",
         `Bearer resource_metadata="${metadata}", scope="email"`,

@@ -31,9 +31,11 @@ export function safeOAuthRedirect(value: string) {
     url.password ||
     (url.protocol !== "https:" &&
       !(
-        import.meta.env.DEV &&
         url.protocol === "http:" &&
-        ["localhost", "127.0.0.1"].includes(url.hostname)
+        ((url.hostname === "127.0.0.1" &&
+          /^\/callback(?:\/[A-Za-z0-9_-]+)?$/.test(url.pathname)) ||
+          (import.meta.env.DEV &&
+            ["localhost", "127.0.0.1"].includes(url.hostname)))
       ))
   )
     throw new Error("Invalid connection redirect.");

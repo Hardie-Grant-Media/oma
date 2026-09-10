@@ -87,6 +87,18 @@ Deno.test(
     );
     assert.equal(metadata.status, 200);
     assert.equal((await metadata.json()).resource, config.resourceUrl);
+    const hostedMetadata = await handler(
+      new Request(
+        config.supabaseUrl + "/mcp/.well-known/oauth-protected-resource",
+      ),
+    );
+    assert.equal(hostedMetadata.status, 200);
+    assert.equal((await hostedMetadata.json()).resource, config.resourceUrl);
+    const hostedAnonymous = await handler(
+      new Request(config.supabaseUrl + "/mcp"),
+    );
+    assert.equal(hostedAnonymous.status, 401);
+    await hostedAnonymous.body?.cancel();
     const anonymous = await handler(request({}, ""));
     assert.equal(anonymous.status, 401);
     assert.match(
