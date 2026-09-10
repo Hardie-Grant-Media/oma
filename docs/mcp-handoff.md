@@ -1,6 +1,6 @@
 # OMA MCP activation and recovery
 
-Status: implemented on `feat/chatgpt-mcp`; **not deployed or connected to ChatGPT**. See [approved scope](mcp-brief.md) and [verification](mcp-verification.md).
+Status: merged, deployed and authenticated in the local Codex app on 10 September 2026. Restart Codex to load the new server into tasks. The separate ChatGPT web connection has not been installed. See [approved scope](mcp-brief.md) and [verification](mcp-verification.md).
 
 ## Production activation, after release approval
 
