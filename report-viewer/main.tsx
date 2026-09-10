@@ -1,3 +1,4 @@
+import { BrandCredit } from "../src/components/brand-credit";
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Button } from "../src/components/ui/button";
@@ -72,7 +73,7 @@ function Viewer() {
   return (
     <main className="shared-report">
       <header className="viewer-header">
-        <strong>HGM</strong>
+        <BrandCredit />
         <span>Owned Media Auditor</span>
         <span>Shared report</span>
       </header>

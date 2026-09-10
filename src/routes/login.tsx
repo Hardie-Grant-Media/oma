@@ -1,3 +1,4 @@
+import { BrandCredit } from "@/components/brand-credit";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase, configured, isDemo } from "@/lib/api";
@@ -181,6 +182,7 @@ function Login() {
       <p className="muted text-sm">
         Access by invitation. Use your work email.
       </p>
+      <BrandCredit />
     </main>
   );
 }

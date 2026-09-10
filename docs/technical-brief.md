@@ -58,3 +58,7 @@ Implementation: shared radius tokens, white panels on a light grey canvas, round
 Environment: feature branch `feat/soft-ui-password-login`; local synthetic preview and browser-intercepted Auth/API tests at loopback addresses. No production database, Auth configuration, schedules, AI calls or email delivery changed. GitHub Pages remains the approved host; this PR is not merged or deployed.
 
 Acceptance: successful/failed password login, denied membership response, invitation-only email links, reset callback under `/oma/`, expired/missing sessions, confirmation mismatch, failed update, responsive monochrome workspace and keyboard/accessibility checks. Real Supabase Auth and SMTP acceptance remains a release check; mocked browser tests do not prove delivery or backend authorization.
+
+## Reload Media branding (approved 2026-09-10)
+
+Timothy identified OMA as a tool built by Reload Media and requested its branding. Use the official white logo sourced from https://www.reloadmedia.com.au/wp-content/uploads/2024/06/ReloadMediaLogo.svg (linked by the homepage), stored locally and displayed on a dark monochrome background. Attribute the login, workspace, password screens and report viewer to Reload Media. New report output identifies the tool builder as Reload Media; existing approved snapshots remain immutable. Product catalogue provenance and offers are unchanged.

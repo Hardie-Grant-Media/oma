@@ -1,3 +1,4 @@
+import { BrandCredit } from "@/components/brand-credit";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/api";
@@ -118,6 +119,7 @@ function Password() {
           </FieldGroup>
         </form>
       )}
+      <BrandCredit />
     </main>
   );
 }

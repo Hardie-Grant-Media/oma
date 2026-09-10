@@ -1,3 +1,4 @@
+import { BrandCredit } from "@/components/brand-credit";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/api";
@@ -50,6 +51,7 @@ function Callback() {
           <Link to="/login">Back to sign-in</Link>
         </Button>
       )}
+      <BrandCredit />
     </main>
   );
 }
