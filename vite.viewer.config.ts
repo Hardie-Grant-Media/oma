@@ -15,7 +15,7 @@ export default defineConfig(({ command }) => {
   }
   return {
     root: "report-viewer",
-    base: command === "build" ? "/reports/" : "/",
+    base: command === "build" ? `${process.env.OMA_BASE_PATH || "/"}reports/` : "/",
     envDir: "report-viewer",
     plugins: [react(), tailwindcss()],
     resolve: {

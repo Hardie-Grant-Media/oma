@@ -36,7 +36,7 @@ function Login() {
                 email: email.trim(),
                 options: {
                   shouldCreateUser: false,
-                  emailRedirectTo: `${location.origin}/auth/callback`,
+                  emailRedirectTo: `${location.origin}${import.meta.env.BASE_URL}auth/callback`,
                 },
               });
             } catch {

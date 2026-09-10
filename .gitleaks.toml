@@ -1,0 +1,7 @@
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Literal demo sessionStorage label, not an API credential"
+paths = ['''^src/lib/demo\.ts$''']
+regexes = ['''oma-synthetic-v1''']
+regexTarget = "match"

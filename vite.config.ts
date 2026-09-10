@@ -5,6 +5,7 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig(({ command, mode }) => ({
+  base: process.env.OMA_BASE_PATH || "/",
   plugins: [
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),

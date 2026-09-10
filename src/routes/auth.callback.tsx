@@ -12,7 +12,7 @@ function Callback() {
   useEffect(() => {
     const code = new URL(location.href).searchParams.get("code");
     if (code && code !== exchange?.code) {
-      history.replaceState({}, "", "/auth/callback");
+      history.replaceState({}, "", `${import.meta.env.BASE_URL}auth/callback`);
       exchange = {
         code,
         promise: supabase

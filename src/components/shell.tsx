@@ -14,7 +14,9 @@ import { Notice } from "./common";
 
 export function Shell() {
   const { data, error, loading, notice } = useStore();
-  const path = useLocation({ select: (l) => l.pathname });
+  const pathname = useLocation({ select: (l) => l.pathname });
+  const basepath = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const path = basepath && pathname.startsWith(basepath + "/") ? pathname.slice(basepath.length) : pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
   if (path === "/login" || path.startsWith("/auth/")) return <Outlet />;
   if (loading)
