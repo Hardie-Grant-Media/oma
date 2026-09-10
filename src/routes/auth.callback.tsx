@@ -9,8 +9,9 @@ function Callback() {
   const { refresh } = useStore();
   const navigate = Route.useNavigate();
   const [failed, setFailed] = useState(false);
+  const [params] = useState(() => new URL(location.href).searchParams);
   useEffect(() => {
-    const code = new URL(location.href).searchParams.get("code");
+    const code = params.get("code");
     if (code && code !== exchange?.code) {
       history.replaceState({}, "", `${import.meta.env.BASE_URL}auth/callback`);
       exchange = {
@@ -23,19 +24,30 @@ function Callback() {
           : Promise.resolve(false),
       };
     }
-    void (exchange?.promise ?? Promise.resolve(false)).then(async (ok) => {
+    let active = true;
+    void (
+      code && exchange?.code === code
+        ? exchange.promise
+        : Promise.resolve(false)
+    ).then(async (ok) => {
+      if (!active) return;
       if (ok) {
         await refresh();
-        await navigate({ to: "/" });
+        await navigate({
+          to: params.get("next") === "password" ? "/auth/password" : "/",
+        });
       } else setFailed(true);
     });
-  }, [navigate, refresh]);
+    return () => {
+      active = false;
+    };
+  }, [navigate, refresh, params]);
   return (
     <main className="login">
       <h1>{failed ? "Link expired." : "Signing in…"}</h1>
       {failed && (
         <Button asChild>
-          <Link to="/login">Send another</Link>
+          <Link to="/login">Back to sign-in</Link>
         </Button>
       )}
     </main>

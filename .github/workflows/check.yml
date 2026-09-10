@@ -21,4 +21,5 @@ jobs:
       - run: npm run test:functions
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - run: npm run test:password
       - run: npm audit --omit=dev

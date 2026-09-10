@@ -8,7 +8,11 @@ test.describe("Local magic links", () => {
   );
   test.use({ baseURL: "http://127.0.0.1:5175" });
   let admin: ReturnType<typeof localClient>;
-  const localClient=(url:string,key:string)=>createClient(url,key,{db:{schema:'api'},auth:{persistSession:false,autoRefreshToken:false}});
+  const localClient = (url: string, key: string) =>
+    createClient(url, key, {
+      db: { schema: "api" },
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
   const userIds: string[] = [];
   const clientIds: string[] = [];
   test.beforeAll(() => {
@@ -95,6 +99,9 @@ test.describe("Local magic links", () => {
   }) => {
     const user = await provision();
     await page.goto("/login");
+    await page
+      .getByRole("button", { name: "Use an email link instead" })
+      .click();
     await page.getByLabel("Email", { exact: true }).fill(user.email);
     await page.getByRole("button", { name: "Send link", exact: true }).click();
     await expect(page.getByRole("status")).toContainText("If you have access");
@@ -114,6 +121,9 @@ test.describe("Local magic links", () => {
   test("expired link", async ({ page, request }) => {
     const user = await provision();
     await page.goto("/login");
+    await page
+      .getByRole("button", { name: "Use an email link instead" })
+      .click();
     await page.getByLabel("Email", { exact: true }).fill(user.email);
     await page.getByRole("button", { name: "Send link", exact: true }).click();
     const href = await link(request, user.email);
@@ -144,6 +154,9 @@ test.describe("Local magic links", () => {
     if (created.error) throw created.error;
     clientIds.push(created.data.id);
     await page.goto("/login");
+    await page
+      .getByRole("button", { name: "Use an email link instead" })
+      .click();
     await page.getByLabel("Email", { exact: true }).fill(user.email);
     await page.getByRole("button", { name: "Send link", exact: true }).click();
     await page.goto(await link(request, user.email));
@@ -187,6 +200,9 @@ test.describe("Local magic links", () => {
     page,
   }) => {
     await page.goto("/login");
+    await page
+      .getByRole("button", { name: "Use an email link instead" })
+      .click();
     await page
       .getByLabel("Email", { exact: true })
       .fill(`unknown-${crypto.randomUUID()}@example.test`);

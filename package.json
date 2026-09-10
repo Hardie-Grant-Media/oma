@@ -15,6 +15,7 @@
     "format": "prettier --write src tests supabase/functions *.json *.ts *.md",
     "dev:viewer": "vite --config vite.viewer.config.ts",
     "build:viewer": "vite build --config vite.viewer.config.ts",
+    "test:password": "playwright test --config playwright.password.config.ts",
     "test:sharing": "playwright test --config playwright.sharing.config.ts",
     "build:hosted": "npm run build && npm run build:viewer"
   },
