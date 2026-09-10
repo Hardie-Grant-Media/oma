@@ -28,6 +28,7 @@ jobs:
       - run: npm run build:hosted
         env:
           OMA_BASE_PATH: /oma/
+          VITE_OMA_MCP_CLIENT_IDS: ${{ vars.OMA_MCP_CLIENT_IDS }}
           VITE_DEMO: 'false'
           VITE_SUPABASE_URL: https://kwnpjfrxusfimzcodlpp.supabase.co
           VITE_SUPABASE_ANON_KEY: ${{ vars.OMA_SUPABASE_PUBLIC_KEY }}
