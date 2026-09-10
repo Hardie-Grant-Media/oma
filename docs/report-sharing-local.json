@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-10",
+  "branch": "feature/oma-mvp",
+  "target": "isolated PostgreSQL 14, 127.0.0.1:55439",
+  "productionChanges": false,
+  "aiCalls": 0,
+  "liveShareLinksCreated": 0,
+  "unitTests": 33,
+  "functionTests": 27,
+  "databaseAssertions": 31,
+  "concurrencyTests": 2,
+  "browserTests": 5,
+  "build": "passed",
+  "staffHosting": "approved; user will push GitHub and connect Netlify",
+  "pending": [
+    "Full Supabase integration",
+    "Netlify URL and build environment",
+    "Production migration and API/reader deployment approval",
+    "Hosted Auth redirects and APP_ORIGINS",
+    "Actual hosted readback and independent review"
+  ]
+}

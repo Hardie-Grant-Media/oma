@@ -1,0 +1,1 @@
+-- No accounts, credentials or client data are seeded by default.

@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+supabase/.temp/
+supabase/.branches/
+.netlify/
+*.tsbuildinfo
+
+dist-viewer/
+
+.DS_Store
+output/

@@ -1,0 +1,27 @@
+[build]
+command = "npm run build:hosted"
+publish = "dist"
+[build.environment]
+NODE_VERSION = "24"
+[[redirects]]
+from = "/reports"
+to = "/reports/"
+status = 301
+[[redirects]]
+from = "/reports/*"
+to = "/reports/index.html"
+status = 200
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+[[headers]]
+for = "/*"
+[headers.values]
+Cache-Control = "no-store, private"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "no-referrer"
+X-Frame-Options = "DENY"
+X-Robots-Tag = "noindex, nofollow, noarchive"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co; frame-src 'self' blob: https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
