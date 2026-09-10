@@ -106,6 +106,18 @@ test("Chrome preserves OAuth request through login, shows consent and allows exp
   await expect(
     page.getByRole("button", { name: "Allow connection" }),
   ).toBeVisible();
+  const initialDetails = calls.filter((c) =>
+    c.path.includes("/oauth/authorizations/"),
+  ).length;
+  const refresh = page.waitForResponse((r) => r.url().endsWith("/snapshot"));
+  await page.evaluate(() => window.dispatchEvent(new Event("focus")));
+  await refresh;
+  await expect(
+    page.getByRole("button", { name: "Allow connection" }),
+  ).toBeVisible();
+  expect(
+    calls.filter((c) => c.path.includes("/oauth/authorizations/")).length,
+  ).toBe(initialDetails);
   expect(calls.filter((c) => c.path.endsWith("/consent"))).toHaveLength(0);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole("button", { name: "Allow connection" }).click();

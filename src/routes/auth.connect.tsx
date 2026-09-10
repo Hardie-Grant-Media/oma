@@ -84,7 +84,7 @@ function Connect() {
     return () => {
       active = false;
     };
-  }, [id, staff]);
+  }, [id, staff?.me.id, staff?.me.active]);
   async function decide(approve: boolean) {
     if (!supabase || busy) return;
     setBusy(true);
