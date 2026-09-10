@@ -9,7 +9,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "check:functions": "deno check --config supabase/functions/deno.json supabase/functions/api/index.ts supabase/functions/worker/index.ts supabase/functions/report-reader/index.ts",
+    "check:functions": "deno check --config supabase/functions/deno.json supabase/functions/api/index.ts supabase/functions/worker/index.ts supabase/functions/report-reader/index.ts supabase/functions/mcp/index.ts",
     "test:db": "supabase test db",
     "test:functions": "deno test --allow-env --config supabase/functions/deno.json tests/functions",
     "format": "prettier --write src tests supabase/functions *.json *.ts *.md",
@@ -17,9 +17,12 @@
     "build:viewer": "vite build --config vite.viewer.config.ts",
     "test:password": "playwright test --config playwright.password.config.ts",
     "test:sharing": "playwright test --config playwright.sharing.config.ts",
-    "build:hosted": "npm run build && npm run build:viewer"
+    "build:hosted": "npm run build && npm run build:viewer",
+    "test:mcp": "playwright test --config playwright.mcp.config.ts",
+    "test:mcp:db": "python3 tests/local/mcp-db.py"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
     "@supabase/supabase-js": "2.116.0",
     "@tanstack/react-router": "1.170.33",
     "class-variance-authority": "0.7.1",

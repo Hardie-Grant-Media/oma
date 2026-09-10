@@ -68,3 +68,7 @@ OMA_LOCAL_AUTH_TESTS=true npm run test:e2e
 The final command needs OMA's isolated local services and tests actual magic links through the local mailbox, plus real API uploads and job cancellation. It creates and removes synthetic members and audit data. Other browser workflow tests use the synthetic adapter; neither proves a hosted AI pipeline. Project-local Deno 2.2.12 generates the v4 lockfile supported by Supabase CLI 2.72.7; use the npm scripts rather than a newer system Deno.
 
 See [verification](docs/verification.md), [deployment](docs/deployment.md), [architecture](docs/architecture.md) and [technical brief](docs/technical-brief.md).
+
+## ChatGPT connection
+
+The authenticated OMA MCP implementation is described in [the MCP brief](docs/mcp-brief.md). [Activation and recovery](docs/mcp-handoff.md) lists the remaining hosted setup and verification; it is not enabled by a frontend deployment alone.

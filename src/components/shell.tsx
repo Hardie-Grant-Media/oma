@@ -22,7 +22,8 @@ export function Shell() {
       ? pathname.slice(basepath.length)
       : pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
-  if (path.replace(/\/$/, "") === "/login" || path.startsWith("/auth/")) return <Outlet />;
+  if (path.replace(/\/$/, "") === "/login" || path.startsWith("/auth/"))
+    return <Outlet />;
   if (loading)
     return (
       <main className="loading">
@@ -94,6 +95,11 @@ export function Shell() {
               Sign out
             </Button>
           )}
+          <Button asChild variant="ghost" size="sm">
+            <Link to="/auth/connect" search={{ authorization_id: "" }}>
+              ChatGPT connection
+            </Link>
+          </Button>
           <BrandCredit />
         </div>
       </aside>

@@ -1,3 +1,4 @@
+import { pendingAuthorization } from "@/lib/mcp-auth";
 import { BrandCredit } from "@/components/brand-credit";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -34,9 +35,13 @@ function Callback() {
       if (!active) return;
       if (ok) {
         await refresh();
-        await navigate({
-          to: params.get("next") === "password" ? "/auth/password" : "/",
-        });
+        const authorization_id = pendingAuthorization();
+        if (authorization_id && params.get("next") !== "password")
+          await navigate({ to: "/auth/connect", search: { authorization_id } });
+        else
+          await navigate({
+            to: params.get("next") === "password" ? "/auth/password" : "/",
+          });
       } else setFailed(true);
     });
     return () => {

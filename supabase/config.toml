@@ -399,3 +399,8 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 [functions.report-reader]
 verify_jwt = false
 import_map = "./functions/deno.json"
+
+# MCP performs OAuth, grant and membership checks itself. Disabled until configured.
+[functions.mcp]
+verify_jwt = false
+import_map = "./functions/deno.json"

@@ -12,7 +12,12 @@ function secure(file) {
 const app = secure("dist/index.html");
 secure("dist/reports/index.html");
 writeFileSync("dist/404.html", app);
-for (const route of ["login", "auth/callback", "auth/password"]) {
+for (const route of [
+  "login",
+  "auth/callback",
+  "auth/password",
+  "auth/connect",
+]) {
   mkdirSync(`dist/${route}`, { recursive: true });
   writeFileSync(`dist/${route}/index.html`, app);
 }
