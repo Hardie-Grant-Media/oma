@@ -1,3 +1,5 @@
+> Sharing is now enabled on GitHub Pages. See [deployment results](report-sharing-release.md). The Netlify instructions below are historical hosting guidance.
+
 # GitHub and Netlify handoff
 
 The combined site hosts the staff app at `/` and report links at `/reports/`. The staff app retains email sign-in, active membership and client assignment checks. Sharing is an explicit action on an approved report revision.
